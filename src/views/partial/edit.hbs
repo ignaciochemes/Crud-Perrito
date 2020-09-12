@@ -1,0 +1,58 @@
+{{>agregar}}
+
+<div class="container" id="irParaAtras">
+    
+</div>
+<div class="container" id="cont-edit">
+    <a href="#" class="btn btn-primary btn-sm" onclick="history.go(-1)">Ir al Inicio</a>
+    <form action="/edit/{{articulo.id}}" method="POST">
+        <div class="form-group">
+            Nombre:
+            <input type="text" class="form-control" name="nombre" value="{{articulo.nombre}}" autofocus>
+        </div>
+        <div class="form-group">
+            Detalles:
+            <input type="text" class="form-control" name="detalles" value="{{articulo.detalles}}">
+        </div>
+        <div class="form-group">
+            Stock:
+            <input type="number" class="form-control" name="stock" value="{{articulo.stock}}">
+        </div>
+        <div class="form-group">
+            Precio Costo:
+            <input type="number" class="form-control" name="preciocosto" value="{{articulo.preciocosto}}">
+        </div>
+        <div class="form-group">
+            Precio Venta:
+            <input type="number" class="form-control" name="precioventa" value="{{articulo.precioventa}}">
+        </div>
+        <div class="form-group">
+            Cantidad Vendidos:
+            <input type="number" class="form-control" name="cantidadvendidos" value="{{articulo.cantidadvendidos}}">
+        </div>
+        <div class="form-group">
+            Categoria Actual:
+            <input type="text" class="form-control" name="categorias" value="{{articulo.categoria}}">
+        </div>
+        <div class="form-group">
+            Descripcion:
+            <textarea name="descripcion" rows="2" class="form-control"> {{articulo.descripcion}}</textarea>
+        </div>
+        <div class="form-row">
+            <div class="col-auto my-1">
+                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="categoria" value="{{articulo.categoria}}">
+                    <option selected>Cambiar Categoria</option>
+                    <option value="Tabacos">Tabacos</option>
+                    <option value="Parafernalia">Parafernalia</option>
+                    <option value="Papeles">Papeles</option>
+                    <option value="Bongs">Bongs</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success btn-block"> Guardar</button>
+        </div>
+    </form>
+
+</div>

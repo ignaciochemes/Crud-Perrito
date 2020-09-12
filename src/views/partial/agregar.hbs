@@ -1,0 +1,59 @@
+<!-- Modal -->
+<div class="modal fade" id="agregar">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar articulo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <form action="/addarticulo" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="nombre" placeholder=" Titulo" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="detalles" placeholder=" Detalles del producto" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="stock" placeholder=" Stock">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="preciocosto" placeholder=" Precio Costo" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="precioventa" placeholder=" Precio Venta" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="cantidadvendidos" placeholder=" Cantidad Vendidos" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="descripcion" rows="2" class="form-control"
+                                placeholder=" Descripcion"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-auto my-1">
+                                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="categoria">
+                                    <option selected>Categorias</option>
+                                    <option value="Tabacos">Tabacos</option>
+                                    <option value="Parafernalia">Parafernalia</option>
+                                    <option value="Papeles">Papeles</option>
+                                    <option value="Bongs">Bongs</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block"> Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

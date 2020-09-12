@@ -1,0 +1,86 @@
+<body>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busca algo, lo que quieras...">
+      <div id="cont-tabla">
+            <table class="table table-condensed table-hover table-striped" id="tablaArticulos">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Detalles</th>
+                        <th>Precio Costo</th>
+                        <th>Precio Venta</th>
+                        <th>Stock</th>
+                        <th>Cantidad Vendidos</th>
+                        <th>Descripcion</th>
+                        <th>Categoria</th>
+                        <th>Ganancia</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody id="mitabla">
+                    {{#each articulo}}
+                        <tr>
+                            <td>{{id}}</td>
+                            <td>{{nombre}}</td>
+                            <td>{{detalles}}</td>
+                            <td>$ {{preciocosto}}</td>
+                            <td>$ {{precioventa}}</td>
+                            <td>{{stock}}</td>
+                            <td>{{cantidadvendidos}}</td>
+                            <td>{{descripcion}}</td>
+                            <td>{{categoria}}</td>
+                            <td>$ {{gananciabruta}}</td>
+                            <td>
+                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalLong">
+                                Eliminar
+                              </button>
+                              <!-- Modal -->
+                              <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLongTitle">Seguro quiere eliminar el articulo?</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      El articulo se borrara de la base de datos y no podra recuperarse. Pero puede volver a crearlo.
+                                    </div>
+                                    <div class="modal-footer">
+                                      <a href="/delete/{{id}}" class="btn btn-danger btn-sm" id="botonEliminar">Eliminar</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                                <a href="/edit/{{id}}" class="btn btn-twitter btn-sm" id="botonEditar">EDITAR</a><a href="/masuno/{{id}}" class="btn btn-success btn-sm" id="botonMasUno">Vendí</a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+    </div>
+<script>
+function myFunction() {
+  // Declarando variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tablaArticulos");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop For - Chequea cada vez que tipeas
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+</body>
