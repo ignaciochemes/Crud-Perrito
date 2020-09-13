@@ -5,31 +5,23 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Detalles</th>
-                        <th>Precio Costo</th>
-                        <th>Precio Venta</th>
-                        <th>Stock</th>
-                        <th>Cantidad Vendidos</th>
-                        <th>Descripcion</th>
-                        <th>Categoria</th>
-                        <th>Ganancia Bruta</th>
+                        <th>Fecha</th>
+                        <th>Producto/s</th>
+                        <th>Persona / Negocio</th>
+                        <th>Ingreso Bruto</th>
+                        <th>Ingreso Neto</th>
                         <th>Accion</th>
                     </tr>
                 </thead>
                 <tbody id="mitabla">
-                    {{#each articulo}}
+                    {{#each ventas}}
                         <tr>
                             <td>{{id}}</td>
-                            <td>{{nombre}}</td>
-                            <td>{{detalles}}</td>
-                            <td>$ {{preciocosto}}</td>
-                            <td>$ {{precioventa}}</td>
-                            <td>{{stock}}</td>
-                            <td>{{cantidadvendidos}}</td>
-                            <td>{{descripcion}}</td>
-                            <td>{{categoria}}</td>
-                            <td>$ {{gananciabruta}}</td>
+                            <td>{{fecha}}</td>
+                            <td>{{producto}}</td>
+                            <td>$ {{persona}}</td>
+                            <td>$ {{ingresobruto}}</td>
+                            <td>{{ingresoneto}}</td>
                             <td>
                               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalLong">
                                 Eliminar
@@ -39,21 +31,21 @@
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLongTitle">Seguro quiere eliminar el articulo?</h5>
+                                      <h5 class="modal-title" id="exampleModalLongTitle">Seguro quiere eliminar la venta?</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      El articulo se borrara de la base de datos y no podra recuperarse. Pero puede volver a crearlo.
+                                      La venta se borrara de la base de datos y no podra recuperarse. Pero puede volver a crearlo.
                                     </div>
                                     <div class="modal-footer">
-                                      <a href="/delete/{{id}}" class="btn btn-danger btn-sm" id="botonEliminar">Eliminar</a>
+                                      <a href="/deleteventa/{{id}}" class="btn btn-danger btn-sm" id="botonEliminar">Eliminar</a>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                                <a href="/edit/{{id}}" class="btn btn-twitter btn-sm" id="botonEditar">EDITAR</a><a href="/masuno/{{id}}" class="btn btn-success btn-sm" id="botonMasUno">Vendí</a>
+                                <a href="/editventa/{{id}}" class="btn btn-twitter btn-sm" id="botonEditar">EDITAR</a>
                             </td>
                         </tr>
                     {{/each}}

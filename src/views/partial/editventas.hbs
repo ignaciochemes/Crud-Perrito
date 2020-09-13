@@ -1,0 +1,29 @@
+{{>agregarventa}}
+<div class="container" id="irParaAtras">
+    
+</div>
+<div class="container" id="cont-edit">
+    <a href="#" class="btn btn-primary btn-sm" onclick="history.go(-1)">Ir al Inicio</a>
+    <form action="/editventa/{{ventas.id}}" method="POST">
+        <div class="form-group">
+            Fecha:
+            <input type="text" class="form-control" name="fecha" value="{{ventas.fecha}}" autofocus>
+        </div>
+        <div class="form-group">
+            Producto:
+            <input type="text" class="form-control" name="producto" value="{{ventas.producto}}">
+        </div>
+        <div class="form-group">
+            Persona o Negocio:
+            <input type="text" class="form-control" name="persona" value="{{ventas.persona}}">
+        </div>
+        <div class="form-group">
+            Ingreso Bruto:
+            <input type="number" class="form-control" name="ingresobruto" value="{{ventas.ingresobruto}}">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success btn-block"> Guardar</button>
+        </div>
+    </form>
+
+</div>

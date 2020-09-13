@@ -53,9 +53,9 @@ router.post('/addarticulo', async (req , res) => {
 
     };
     console.log(newArticulo);
-    //const ganancia = newArticulo.precioventa - newArticulo.preciocosto;
+    //const ganancia = newventas.precioventa - newventas.preciocosto;
     //console.log(ganancia);
-    //await pool.query(`INSERT INTO articulo (ganancia) VALUES ?`, [ganancia2])
+    //await pool.query(`INSERT INTO ventas (ganancia) VALUES ?`, [ganancia2])
     await pool.query('INSERT INTO articulo set ?', [newArticulo]);
     res.redirect('/home');
 });
@@ -67,8 +67,8 @@ router.get('/delete/:id', async(req,res) => {
 });
 router.get('/edit/:id', async (req, res) => {
     const { id } = req.params;
-    const articulos = await pool.query('SELECT * FROM articulo WHERE id =?', [id]);
-    res.render('partial/edit', {articulo: articulos[0]});
+    const articulo = await pool.query('SELECT * FROM articulo WHERE id =?', [id]);
+    res.render('partial/edit', {articulo: articulo[0]});
 });
 
 router.post('/edit/:id', async (req, res) => {
@@ -107,6 +107,58 @@ router.get('/masuno/:id', async (req, res) => {
     await pool.query('UPDATE articulo SET ganancianeta = (precioventa - preciocosto) * cantidadvendidos WHERE id = ?', [id]);
     await pool.query('UPDATE articulo SET gananciabruta = precioventa * cantidadvendidos WHERE id = ?', [id]);
     res.redirect('/home');
+});
+
+//TABLA VENTAS! ================================
+//TABLA VENTAS! ================================
+//TABLA VENTAS! ================================
+
+router.get('/tablaventas', async(req, res) => {
+    const ventas = await pool.query('SELECT * FROM ventas');
+    //await pool.query('UPDATE ganancias SET gananciabruta = (SELECT SUM(`gananciabruta`) FROM articulo)');
+    //await pool.query('UPDATE ganancias SET ganancianeta = (SELECT SUM(`ganancianeta`) FROM articulo)');
+    res.render('partial/tablaventas', {ventas});
+});
+router.post('/addventa', async (req , res) => {
+    const {fecha, producto, persona, ingresobruto, ingresoneto} = req.body;
+    const newVenta = {
+        fecha,
+        producto,
+        persona,
+        ingresobruto,
+        ingresoneto
+    };
+    console.log(newVenta);
+    //const ganancia = newventas.precioventa - newventas.preciocosto;
+    //console.log(ganancia);
+    //await pool.query(`INSERT INTO ventas (ganancia) VALUES ?`, [ganancia2])
+    await pool.query('INSERT INTO ventas set ?', [newVenta]);
+    res.redirect('/tablaventas');
+});
+router.get('/deleteventa/:id', async(req,res) => {
+    const { id } = req.params;
+    await pool.query('DELETE FROM ventas WHERE id = ?', [id]);
+    res.redirect('/tablaventas');
+});
+router.get('/editventa/:id', async (req, res) => {
+    const { id } = req.params;
+    const venta = await pool.query('SELECT * FROM ventas WHERE id =?', [id]);
+    res.render('partial/editventas', {ventas: venta[0]});
+});
+router.post('/editventa/:id', async (req, res) => {
+    const {fecha, producto, persona, ingresobruto, ingresoneto} = req.body;
+    const { id } = req.params;
+    const newVentas = {
+        fecha,
+        producto,
+        persona,
+        ingresobruto,
+        ingresoneto
+    };
+    await pool.query('UPDATE ventas set ? WHERE id = ?', [newVentas, id]);
+    //await pool.query('UPDATE ventas SET gananciabruta = precioventa * cantidadvendidos WHERE id = ?', [id]);
+    //await pool.query('UPDATE ventas SET ganancianeta = (precioventa - preciocosto) * cantidadvendidos WHERE id = ?', [id]);
+    res.redirect('/tablaventas');
 });
 
 module.exports = router;

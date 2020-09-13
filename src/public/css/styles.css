@@ -144,7 +144,8 @@ h5,h6,h2,h3{
     color: rgb(44, 44, 44);
   }
   #jumbotron{
-    margin-right: 30px;
+    margin-top: 20px;
+    margin-right: 20px;
     margin-left: 30px;
     padding-top: 10px;
     padding-bottom: 10px;
