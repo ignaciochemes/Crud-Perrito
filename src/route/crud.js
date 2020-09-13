@@ -11,8 +11,6 @@ router.get('/home', async (req , res) => {
         await pool.query('UPDATE ganancias SET ganancianeta = (SELECT SUM(`ganancianeta`) FROM articulo)');
         const ganancias = await pool.query('SELECT * FROM ganancias')
         res.render('partial/index', {articulo, ganancias});
-        //res.render('partial/index');
-        //res.send('Perrito')
     } else {
         res.send('La concha de tu madre!');
     }
@@ -53,9 +51,6 @@ router.post('/addarticulo', async (req , res) => {
 
     };
     console.log(newArticulo);
-    //const ganancia = newventas.precioventa - newventas.preciocosto;
-    //console.log(ganancia);
-    //await pool.query(`INSERT INTO ventas (ganancia) VALUES ?`, [ganancia2])
     await pool.query('INSERT INTO articulo set ?', [newArticulo]);
     res.redirect('/home');
 });
@@ -117,7 +112,6 @@ router.get('/tablaventas', async(req, res) => {
     await pool.query('UPDATE gananciasventas SET gananciabrutaventas = (SELECT SUM(`ingresobruto`) FROM ventas)');
     const ventas = await pool.query('SELECT * FROM ventas');
     const gananciasventas = await pool.query('SELECT * FROM gananciasventas');
-    //await pool.query('UPDATE ganancias SET gananciabruta = (SELECT SUM(`gananciabruta`) FROM articulo)');
     res.render('partial/tablaventas', {ventas, gananciasventas});
 });
 router.post('/addventa', async (req , res) => {
@@ -129,9 +123,6 @@ router.post('/addventa', async (req , res) => {
         ingresobruto
     };
     console.log(newVenta);
-    //const ganancia = newventas.precioventa - newventas.preciocosto;
-    //console.log(ganancia);
-    //await pool.query(`INSERT INTO ventas (ganancia) VALUES ?`, [ganancia2])
     await pool.query('INSERT INTO ventas set ?', [newVenta]);
     res.redirect('/tablaventas');
 });
@@ -156,8 +147,6 @@ router.post('/editventa/:id', async (req, res) => {
         ingresoneto
     };
     await pool.query('UPDATE ventas set ? WHERE id = ?', [newVentas, id]);
-    //await pool.query('UPDATE ventas SET gananciabruta = precioventa * cantidadvendidos WHERE id = ?', [id]);
-    //await pool.query('UPDATE ventas SET ganancianeta = (precioventa - preciocosto) * cantidadvendidos WHERE id = ?', [id]);
     res.redirect('/tablaventas');
 });
 
