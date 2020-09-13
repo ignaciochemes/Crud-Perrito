@@ -114,19 +114,19 @@ router.get('/masuno/:id', async (req, res) => {
 //TABLA VENTAS! ================================
 
 router.get('/tablaventas', async(req, res) => {
+    await pool.query('UPDATE gananciasventas SET gananciabrutaventas = (SELECT SUM(`ingresobruto`) FROM ventas)');
     const ventas = await pool.query('SELECT * FROM ventas');
+    const gananciasventas = await pool.query('SELECT * FROM gananciasventas');
     //await pool.query('UPDATE ganancias SET gananciabruta = (SELECT SUM(`gananciabruta`) FROM articulo)');
-    //await pool.query('UPDATE ganancias SET ganancianeta = (SELECT SUM(`ganancianeta`) FROM articulo)');
-    res.render('partial/tablaventas', {ventas});
+    res.render('partial/tablaventas', {ventas, gananciasventas});
 });
 router.post('/addventa', async (req , res) => {
-    const {fecha, producto, persona, ingresobruto, ingresoneto} = req.body;
+    const {fecha, producto, persona, ingresobruto} = req.body;
     const newVenta = {
         fecha,
         producto,
         persona,
-        ingresobruto,
-        ingresoneto
+        ingresobruto
     };
     console.log(newVenta);
     //const ganancia = newventas.precioventa - newventas.preciocosto;
