@@ -22,10 +22,12 @@ body {
     
 }
 #footer-ul{
-    margin: 30px;
-    background: rgba(104, 104, 104, 0.842);
-    padding: 4px;
-    border-radius: 4px;
+    font-size: 25px;
+    margin-top: 30px;
+    margin-right: 3px;
+    margin-right: 3px;
+    background: rgba(0, 0, 0, 0.842);
+    border-radius: 1px;
 }
 
 h1,h4 {
@@ -75,9 +77,11 @@ h5,h6,h2,h3{
     background-color: #f1f1f1;
   }
   #botonAgregar{
-    font-size: 20px;
+    margin-left: 20px;
+    font-size: 16px;
     font-weight: bold !important;
     font-family: arial;
+    color: brown;
   }
   #botonEliminar{
     font-size: 15px;
@@ -150,3 +154,28 @@ h5,h6,h2,h3{
     padding-top: 10px;
     padding-bottom: 10px;
   }
+  #container-chart{
+    width: 350px;
+    height: 200px;
+  }
+  #cont-landing{
+    background-size: 2000px, 500px;
+    background-image: url("https://i.imgur.com/PTD5uvz.jpeg");
+  }
+  h2{
+    margin: 0;     
+    color: #666;
+    padding-top: 90px;
+    font-size: 52px;
+    font-family: "trebuchet ms", sans-serif;    
+}
+#card-landing{
+    margin-top: 30px;
+    width: 100%;
+    height: auto;
+}
+#card-precios-fotos{
+    width:100%;
+    height:auto;
+}
+

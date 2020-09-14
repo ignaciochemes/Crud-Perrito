@@ -1,0 +1,19 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js" integrity="sha512-QEiC894KVkN9Tsoi6+mKf8HaCLJvyA6QIRzY5KrfINXYuP9NxdIkRQhGq3BZi0J4I7V5SidGM3XUQ5wFiMDuWg==" crossorigin="anonymous"></script>
+<div class="chart-container" style="position: relative; height:30vh; width:40vw">
+    <canvas id="myChart"></canvas>
+</div>
+<script>
+var data = [123, 123, 222, 123, 123];
+var labels =  ["tabacos", "papeles", "parafernalia", "bongs", "filtros"];
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'This week',
+            data: data,
+        }]
+    },
+});
+</script>

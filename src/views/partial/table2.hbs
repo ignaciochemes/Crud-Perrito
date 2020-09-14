@@ -1,7 +1,6 @@
 <body>
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busca algo, lo que quieras...">
       <div id="cont-tabla">
-            <table class="table table-condensed table-hover table-striped">
+            <table class="order-table table" id="tablaArticulos">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -61,7 +60,7 @@ function myFunction() {
 
   // Loop For - Chequea cada vez que tipeas
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
+    td = tr[i].getElementsByTagName("td")[3];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {

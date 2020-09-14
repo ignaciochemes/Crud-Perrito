@@ -1,29 +1,35 @@
- {{>navbar3}}
- {{>agregar}}
- {{>ganancias}}
- {{>table}}
-<body>
-    <main> 
-        <div class="container" id="cont-index">
-            <div class="row">
-                <div class="col">
-                    <div class="container-fluid p-4">
-                        <div class="row">
-                            {{#each articulo}}
-                            {{else}}
-                            <div class="col-md-4 mx-auto">
-                                <div class="car card-body text-center">
-                                    <h3> No tienes articulos publicados</h3>
-                                </div>
-                                <div class="car card-body text-center">
-                                    <a class="btn btn-success" data-toggle="modal" data-target="#agregar">Agregar</a>
+ <div class="container-fluid" id="container-principal">
+    {{>navbar3}}
+    {{>agregar}}
+        <div class="row">
+            <div class="col-sm-6">{{>ganancias}}</div>
+            <div class="col-sm" id="columna-buscar">{{>charts}}</div>
+        </div>
+    {{>buscar}}
+    {{>table}}
+        <body>
+            <main> 
+                <div class="container" id="cont-index">
+                    <div class="row">
+                        <div class="col">
+                            <div class="container-fluid p-4">
+                                <div class="row">
+                                    {{#each articulo}}
+                                    {{else}}
+                                    <div class="col-md-4 mx-auto">
+                                        <div class="car card-body text-center">
+                                            <h3> No tienes articulos publicados</h3>
+                                        </div>
+                                        <div class="car card-body text-center">
+                                            <a class="btn btn-success" data-toggle="modal" data-target="#agregar">Agregar</a>
+                                        </div>
+                                    </div>
+                                    {{/each}}
                                 </div>
                             </div>
-                            {{/each}}
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </main>
-</body>
+            </main>
+        </body>
+ </div>

@@ -9,14 +9,26 @@ router.get('/home', async (req , res) => {
         const articulo = await pool.query('SELECT * FROM articulo');
         await pool.query('UPDATE ganancias SET gananciabruta = (SELECT SUM(`gananciabruta`) FROM articulo)');
         await pool.query('UPDATE ganancias SET ganancianeta = (SELECT SUM(`ganancianeta`) FROM articulo)');
-        const ganancias = await pool.query('SELECT * FROM ganancias')
-        res.render('partial/index', {articulo, ganancias});
+        const ganancias = await pool.query('SELECT * FROM ganancias');
+        const objetosCharts = await pool.query('SELECT * FROM charts');
+        res.render('partial/index', {articulo, ganancias, objetosCharts});
     } else {
         res.send('La concha de tu madre!');
     }
 });
-router.get('/', function(req , res) {
+router.get('/', async(req , res) => {
+    res.render('partial/lacasonagrow');
+});
+router.get('/administracion', async(req, res) => {
     res.render('partial/login');
+});
+router.get('/precios', async(req, res) => {
+    const articulo = await pool.query('SELECT * FROM articulo');
+    res.render('partial/lacasonagrow2', {articulo});
+});
+router.get('/tablaprecios', async(req, res) => {
+    const articulo = await pool.query('SELECT * FROM articulo');
+    res.render('partial/precios', {articulo});
 });
 router.post('/auth', async (req, res) => {
 	let username = req.body.username;
@@ -38,7 +50,7 @@ router.post('/auth', async (req, res) => {
 	}
 });
 router.post('/addarticulo', async (req , res) => {
-    const {nombre, detalles, stock, preciocosto, precioventa, cantidadvendidos, categoria, descripcion} = req.body;
+    const {nombre, detalles, stock, preciocosto, precioventa, cantidadvendidos, categoria, descripcion, img} = req.body;
     const newArticulo = {
         nombre,
         stock,
@@ -48,7 +60,7 @@ router.post('/addarticulo', async (req , res) => {
         cantidadvendidos,
         categoria,
         descripcion,
-
+        img
     };
     console.log(newArticulo);
     await pool.query('INSERT INTO articulo set ?', [newArticulo]);
@@ -67,7 +79,7 @@ router.get('/edit/:id', async (req, res) => {
 });
 
 router.post('/edit/:id', async (req, res) => {
-    const {nombre, detalles, stock, preciocosto, precioventa, cantidadvendidos, categoria, descripcion, ganancianeta, gananciabruta} = req.body;
+    const {nombre, detalles, stock, preciocosto, precioventa, cantidadvendidos, categoria, descripcion, ganancianeta, gananciabruta, img} = req.body;
     const { id } = req.params;
     const newArticulo = {
         nombre,
@@ -79,7 +91,8 @@ router.post('/edit/:id', async (req, res) => {
         categoria,
         descripcion,
         ganancianeta,
-        gananciabruta
+        gananciabruta,
+        img
     };
     await pool.query('UPDATE articulo set ? WHERE id = ?', [newArticulo, id]);
     await pool.query('UPDATE articulo SET gananciabruta = precioventa * cantidadvendidos WHERE id = ?', [id]);

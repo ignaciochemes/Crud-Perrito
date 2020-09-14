@@ -1,7 +1,6 @@
 <body>
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busca algo, lo que quieras...">
       <div id="cont-tabla">
-            <table class="table table-condensed table-hover table-striped">
+            <table class="order-table table" id="tablaArticulos">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -60,27 +59,4 @@
                 </tbody>
             </table>
     </div>
-<script>
-function myFunction() {
-  // Declarando variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("tablaArticulos");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop For - Chequea cada vez que tipeas
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
 </body>

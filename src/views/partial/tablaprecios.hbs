@@ -1,0 +1,34 @@
+<body>
+      <div id="cont-tabla">
+            <table class="order-table table" id="tablaPrecios">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Detalles</th>
+                        <th>Precio Venta</th>
+                        <th>Stock</th>
+                        <th>Descripcion</th>
+                        <th>Categoria</th>
+                        <!-- <th>Accion</th> -->
+                    </tr>
+                </thead>
+                <tbody id="mitabla">
+                    {{#each articulo}}
+                        <tr>
+                            <td>{{id}}</td>
+                            <td>{{nombre}}</td>
+                            <td>{{detalles}}</td>
+                            <td>$ {{precioventa}}</td>
+                            <td>{{stock}}</td>
+                            <td>{{descripcion}}</td>
+                            <td>{{categoria}}</td>
+                            <td>
+                               <!-- <a href="/edit/{{id}}" class="btn btn-twitter btn-sm" id="botonEditar">Agregar al carrito</a> -->
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+    </div>
+</body>
