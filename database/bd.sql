@@ -13,7 +13,8 @@ CREATE TABLE articulo(
     categoria VARCHAR(50) NOT NULL,
     descripcion VARCHAR(200) NOT NULL,
     ganancianeta VARCHAR(200) NOT NULL,
-    gananciabruta VARCHAR(200) NOT NULL
+    gananciabruta VARCHAR(200) NOT NULL,
+    img VARCHAR(200) NOT NULL
 );
 --
 CREATE TABLE accounts(

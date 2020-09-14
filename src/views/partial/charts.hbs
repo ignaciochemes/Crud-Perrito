@@ -3,8 +3,8 @@
     <canvas id="myChart"></canvas>
 </div>
 <script>
-var data = [123, 123, 222, 123, 123];
-var labels =  ["tabacos", "papeles", "parafernalia", "bongs", "filtros"];
+var data1 = [1];
+var labels =  ["tabacos"];
 var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'line',
@@ -12,7 +12,7 @@ var myChart = new Chart(ctx, {
         labels: labels,
         datasets: [{
             label: 'This week',
-            data: data,
+            data: data1,
         }]
     },
 });
